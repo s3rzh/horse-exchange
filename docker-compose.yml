@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  horse-exchange-app:
+    build: ./
+    command: ./wait-for-postgres.sh pgdb ./horse-exchange-app
+    ports:
+      - 8000:8000
+    depends_on:
+      - pgdb
+    environment:
+      - DB_PASSWORD=qwerty
+
+  pgdb:
+    restart: always
+    image: postgres:13
+    volumes:
+      - ./.database/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=qwerty
+      - PGDATA=/var/lib/postgresql/data
+      - POSTGRES_DB=postgres
+    ports:
+      - 5434:5432

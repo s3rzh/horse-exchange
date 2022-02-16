@@ -1,0 +1,24 @@
+port: "8000"
+
+db:
+    username: "postgres"
+    dbhost: "pgdb"
+    port: "5432"
+    dbname: "postgres"
+    sslmode: "disable"
+
+messages:
+    responses:
+        successful_buy: "поздравляем, Вы приобрели лошадь"    
+        successful_pay: "аренда успешно оплачена"    
+        buy_url: "аренда зарезервирована, ссылка для оплаты: http://localhost:8000/api/horses/rent/%d/pay"    
+    errors:
+        invalid_id: "неверный идентификатор"
+        invalid_format: "неверный формат"
+        not_found: "ничего не найдено"    
+        retry_later: "повторите позже"    
+        rented_or_sold: "лошадь находится в аренде или уже продана"    
+        busy_period: "аренда в этот период уже занята"    
+        rent_not_reserved_or_paid : "аренда не зарезервирована или уже оплачена"    
+        wrong_since_time_format : "неверный формат поля since"    
+        wrong_till_time_format : "неверный формат поля till" 
